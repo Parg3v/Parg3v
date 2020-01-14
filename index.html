@@ -1,0 +1,202 @@
+<html>
+
+<head>
+   <script src="p5.js"></script>
+   <script src="class.js"></script>
+   <script src="script.js"></script>
+   <script src="p5.js-sound-master/lib/p5.sound.js"></script> 
+
+   <style>
+         #generator{
+             background-color:#ffa600;
+         }
+         #green{
+            background-color:#29d829;
+         }
+         #yellow{
+            background-color:#fffb00;
+         }
+         #blue{
+            background-color:#1e69aa;
+         }
+         #red{
+            background-color:#ff0000;
+         }
+         #grey{
+            background-color:#707172;
+         }
+          div{
+              display:inline-block;
+          }
+          table, tr, td{
+              border: 1px solid black;
+              border-collapse:collapse;
+              padding:5px;
+          }
+         table{
+           margin-top:20px;
+           margin-right:20px;
+           float:right;
+        }
+         body{
+            font-family:optima
+         }
+        #first{
+           background-color:#232323;
+           color:white;
+        }
+        .alice{
+           border-color:aliceblue;
+           height:40px;
+        }
+      </style>
+  
+</head>
+
+<body>
+
+
+   	<table>
+            <tr id="first">
+               <td class="alice"></td>
+               <td class="alice">Գույն</td>
+               <td class="alice">Ինֆորմացիա</td>
+               <td class="alice">Էներգիա</td>
+               <td class="alice">Բազմանալու մասին Ինֆորմացիա</td>
+               <td class="alice">Էներգիայի Ձեռքբերում</td>
+               <td class="alice">Հատկություններ</td>
+            </tr>
+            <tr>
+               <td id="grey"></td>
+               <td>
+                  <p>Մոխրագույն</p>
+               </td>
+               <td>
+                  <p>Դատարկ վանդակ</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>-</td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+            </tr>
+      
+            <tr>
+               <td id="green"></td>
+               <td>
+                  <p>Կանաչ</p>
+               </td>
+               <td>
+                  <p>Ուղակի խոտ</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>
+                  <p>Բազմանում է 8 կադրը մեկ</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>
+                  <p>Ունի Ռանդոմ գույն 3 տարբերակից;<br>Հայտնվում է Ռանդով</p>
+               </td>
+            </tr>
+      
+            <tr>
+               <td id="blue"></td>
+               <td>
+                  <p>Կապույտ</p>
+               </td>
+               <td>
+                  <p>Կործանիչ</p>
+               </td>
+               <td>
+                  <p>8</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>
+                  <p>կա՛մ խոտ, կա՛մ խոտակեր ուտելով</p>
+               </td>
+               <td>
+                  <p>Երբ գույնը դառնում է բաց կապույտ, այն Ձեռք է բերում կա՛մ խոտակերի, կա՛մ գիշատիչի Հատկությունները; <br> Երբ էներգիան դառնում է 0, մահանում է;<br>Հայտնվում է Ռանդով</p>
+               </td>
+            </tr>
+      
+            <tr>
+               <td id="yellow"></td>
+               <td>
+                  <p>Դեղին</p>
+               </td>
+               <td>
+                  <p>Խոտակեր</p>
+               </td>
+               <td>
+                  <p>8</p>
+               </td>
+               <td>
+                  <p>բազմանում է, եթե mul - ը 8 է, և խոտ է ուտում</p>
+               </td>
+               <td>
+                  <p>ուտում է խոտ</p>
+               </td>
+               <td>
+                  <p>Երբ էներգիան դառնում է 0, մահանում է; <br>Հայտնվում է Ռանդոմով, եթե 3-ից քիչ խոտակեր է մնացել</p>
+               </td>
+            </tr>
+      
+            <tr>
+               <td id="red"></td>
+               <td>
+                  <p>Կարմիր</p>
+               </td>
+               <td>
+                  <p>Գիշատիչ</p>
+               </td>
+               <td>
+                  <p>8</p>
+               </td>
+               <td>
+                  <p>բազմանում է, եթե mul - ը 8 է, և խոտակեր է ուտում</p>
+               </td>
+               <td>
+                  <p>Երբ խոտակեր է ուտում</p>
+               </td>
+               <td>
+                  <p>Հայտնվում է Ռանդոմով, եթե 2-ից քիչ գիշատիչ է մնացել; <br>Երբ էներգիան դառնում է 0, մահանում է</p>
+               </td>
+            </tr>
+      
+            <tr>
+               <td id="generator"></td>
+               <td>
+                  <p>Կարմիր-ծիրանագույն-դեղին</p>
+               </td>
+               <td>
+                  <p>Գեներատոր</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>
+                  <p>-</p>
+               </td>
+               <td>
+                  <p>Երբ դառնում է դեղին, իր շրջակայքում ստեղծում է կա՛մ խոտ, կա՛մ խոտակեր, կա՛մ գիշատիչ</p>
+               </td>
+            </tr>      
+         </table>
+         <br>
+</body>
+
+</html>
